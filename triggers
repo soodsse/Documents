@@ -1,0 +1,59 @@
+Trigger
+
+Table Client
+
+Time After
+
+Event Delete
+
+BEGIN
+  DELETE FROM events where client_id = OLD.id;
+  DELETE FROM users where client_id = OLD.id;
+  DELETE FROM agenda where client_id = OLD.id;
+END
+
+
+Code:
+CREATE TRIGGER `client_delete` AFTER DELETE ON `clients`
+ FOR EACH ROW BEGIN
+  DELETE FROM events where client_id = OLD.id;
+  DELETE FROM users where client_id = OLD.id;
+  DELETE FROM agenda where client_id = OLD.id;
+END
+
+
+
+As Client is deleted from website the Trigger will run on Delete and delete all reference from three table. After that create one more trigger as below.
+
+Table Agenda
+
+Time After
+
+Event Delete
+
+BEGIN
+  DELETE FROM agenda_presentation where session_id = OLD.id;
+  DELETE FROM agenda_presentation_pc where session_id = OLD.id;
+  DELETE FROM agenda_speaker where agendaID = OLD.id;
+  DELETE FROM agenda_audience where session_id = OLD.id;
+  DELETE FROM agendawebvideo where session_id = OLD.id;
+  DELETE FROM agendanotes where session_id = OLD.id;
+
+Code:
+
+CREATE TRIGGER `delet_agenda` AFTER DELETE ON `agenda`
+ FOR EACH ROW BEGIN
+  DELETE FROM agenda_presentation where session_id = OLD.id;
+  DELETE FROM agenda_presentation_pc where session_id = OLD.id;
+  DELETE FROM agenda_speaker where agendaID = OLD.id;
+  DELETE FROM agenda_audience where session_id = OLD.id;
+  DELETE FROM agendawebvideo where session_id = OLD.id;
+  DELETE FROM agendanotes where session_id = OLD.id;
+  DELETE FROM agendafiles where session_id = OLD.id;
+END
+  DELETE FROM agendafiles where session_id = OLD.id;
+END
+
+As such agenda will be deleted all the entries from above tables will also be deleted as the second trigger will hit automatically.
+
+ 
