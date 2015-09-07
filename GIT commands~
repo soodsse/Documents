@@ -60,8 +60,7 @@ Connect to a remote repository
 If you haven't connected your local repository to a remote server, add the server to be able to push to it:
 	
 
-$ git remote add origin https://github.com/WEMP/project-slideshow.git
-$ git push -u origin master
+git remote add origin <server>
 
 List all currently configured remote repositories:	git remote -v
 

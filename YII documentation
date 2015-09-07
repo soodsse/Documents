@@ -1,0 +1,9 @@
+Documentation
+
+Creating dynamic URL in views using createUrl();
+include below namespace in html
+use yii\helpers\Url;
+
+below is the reference of URL.
+1.	Yii::$app->urlManager->createUrl(['users-register/profile-update', 'id' => 1])
+
