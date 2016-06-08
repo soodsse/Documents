@@ -153,3 +153,19 @@ git reset --hard origin/master
 
 Search
 	Search the working directory for foo():	git grep "foo()"
+	
+git stash
+
+suppose you are on Branch "develop" and you have some un-committed files now you want to switch to other Branch without committing those files. So
+
+a) git stash 
+
+Now, you can switch to other Branch.
+
+Now  check for git stash list
+
+b) git stash list
+You can now switch to any stash version 
+
+c) git stash apply stash@{2}
+Note: stash@{2} is the array print after running git stash list
