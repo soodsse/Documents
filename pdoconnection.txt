@@ -10,3 +10,4 @@ function getConnection() {
     }
     return $conn;
 }
+// This is test code
